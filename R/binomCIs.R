@@ -4,8 +4,8 @@ binomCIs <- function(x, n, a = 0.05) {
   prop <- x/n
   pq <- prop * (1 - prop)
   lcor <- exp( log(a/2)/n )
-  id0 <- which(prop == 0)
-  id1 <- which(prop == 1)
+  id0 <- which( prop == 0 )
+  id1 <- which( prop == 1 )
   mod[[ 1 ]] <- prop
   ## Jeffreys
   com <- n - x + 0.5
@@ -52,6 +52,10 @@ binomCIs <- function(x, n, a = 0.05) {
   pb <- xb / nb
   com <- z * sqrt(n) / nb * sqrt( pq + z^2/4/n )
   res <- cbind(pb - com, pb + com)
+  ep <- which( x == 1 )
+  if ( length(ep) > 0 )  res[ep, 1] <-  -log(1 - a)/n[ep]
+  ep <- which( n - x == 1 )
+  if ( length(ep) > 0 )  res[ep, 2] <- 1 + log(1 - a)/n[ep]
   mod[[ 7 ]] <- res
   colnames(mod[[ 7 ]]) <- c(paste(a/2, "%", sep = ""), paste(1 - a/2, "%", sep = ""))
   ## Score

@@ -14,20 +14,20 @@ binomCI <- function(x, n, a = 0.05) {
     ## Wald
     com <- z * sqrt( pq/n )
     res <- c(prop - com, prop + com)
-    if (prop == 0) res <- c(0, 1 - lcor)
-    if (prop == 1) res <- c(lcor, 1)
+    if ( prop == 0 ) res <- c(0, 1 - lcor)
+    if ( prop == 1 ) res <- c(lcor, 1)
     mod[2, ] <- res
     ## Wald corrected
     com <- z * sqrt( pq/n ) + 0.5/n
     res <- c(prop - com, prop + com)
-    if (prop == 0) res <- c(0, 1 - lcor)
-    if (prop == 1) res <- c(lcor, 1)
+    if ( prop == 0 ) res <- c(0, 1 - lcor)
+    if ( prop == 1 ) res <- c(lcor, 1)
     mod[3, ] <- res
     ## Wald Blyth and Still
     com <- z * sqrt( pq ) / sqrt(n - z^2 - 2 * z/sqrt(n) - 1/n) + 0.5/n
     res <- c(prop - com, prop + com)
-    if (prop == 0) res <- c(0, 1 - lcor)
-    if (prop == 1) res <- c(lcor, 1)
+    if ( prop == 0 ) res <- c(0, 1 - lcor)
+    if ( prop == 1 ) res <- c(lcor, 1)
     mod[4, ] <- res
     ## Agresti and Coull
     theta <- (x + 2) / (n + 4)
@@ -39,6 +39,8 @@ binomCI <- function(x, n, a = 0.05) {
     pb <- xb / nb
     com <- z * sqrt(n) / nb * sqrt( pq + z^2/4/n )
     mod[6, ] <- c(pb - com, pb + com)
+    if ( x == 1 )  mod[6, 1] <-  -log(1 - a)/n
+    if ( n - x == 1 )  mod[6, 2] <- 1 + log(1 - a)/n
     ## Score
     com <- z * sqrt(x - x^2/n + z^2/4)
     mod[7, ] <- c( x + z^2 - com, x + z^2 + com ) / (n + z^2)
@@ -52,8 +54,8 @@ binomCI <- function(x, n, a = 0.05) {
     com <- z / sqrt(x * (1 - prop) )
     res <- exp( c(b - com, b + com) )
     res <- 1 - 1 / ( 1 + res)
-    if (prop == 0) res <- c(0, 1 - lcor)
-    if (prop == 1) res <- c(lcor, 1)
+    if ( prop == 0 )  res <- c(0, 1 - lcor)
+    if ( prop == 1 )  res <- c(lcor, 1)
     mod[9, ] <- res
     ## Wald logit corrected
     pb <- x + 0.5
@@ -67,8 +69,8 @@ binomCI <- function(x, n, a = 0.05) {
     com <- 0.5 * z / sqrt(n)
     res <- c(pb - com, pb + com)
     res <- sin(res)^2
-    if (prop == 0) res <- c(0, 1 - lcor)
-    if (prop == 1) res <- c(lcor, 1)
+    if ( prop == 0 )  res <- c(0, 1 - lcor)
+    if ( prop == 1 )  res <- c(lcor, 1)
     mod[11, ] <- res
     ## Exact binomial
     a1 <- n - x + 1
@@ -77,8 +79,8 @@ binomCI <- function(x, n, a = 0.05) {
     d2 <- (x + 1) * qf(1 - a/2, 2 * (x + 1), 2 * a2)
     res <- c( 1 + a1/d1, 1 + a2/d2 )
     res <- 1 / res
-    if (prop == 0) res[1] <- 0
-    if (prop == 1) res[2] <- 1
+    if ( prop == 0 )  res[1] <- 0
+    if ( prop == 1 )  res[2] <- 1
     mod[12, ] <- res
     rownames(mod) <- c("Jeffreys", "Wald", "Wald corrected", "Wald-Blyth-Still", "Agresti-Coull", "Wilson",
     "Score", "Score corrected", "Wald logit", "Wald logit corrected", "Arcsine", "Exact binomial")

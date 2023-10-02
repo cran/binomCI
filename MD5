@@ -1,7 +1,7 @@
-746ca5cf4bbe5a7746dbfa8ca7e4bea0 *DESCRIPTION
+4bbd7366a8014f86b2cda7c1d33f8d9f *DESCRIPTION
 448437865d371bc84782edb8f49cfe56 *NAMESPACE
-5887809bb9ce345624ce488069b26581 *R/binomCI.R
-7b30b25c3acd4bb11c4137fdbfe35eec *R/binomCIs.R
-72d61a3955ec3233d5f475cb642b79e3 *man/binomCI-package.Rd
+b5c605811b45e1f253e65c1a9f6b438d *R/binomCI.R
+6f7b3943236f32f392e0e025ded4402c *R/binomCIs.R
+4d4d4bf626fc5f22d339df17ccc5f2cd *man/binomCI-package.Rd
 f442e006f5b3de8de1a6a06c2c884aa1 *man/binomCI.Rd
 df51e69a169f78939ee3da0638b4d0c0 *man/binomCIs.Rd

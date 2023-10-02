@@ -11,8 +11,8 @@ Functions to compute 12 confidence intervals for a binomial proportion.
 \tabular{lll}{
 Package: \tab binomCI\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2023-08-10\cr
+Version: \tab 1.1\cr
+Date: \tab 2023-10-02\cr
 License: \tab GPL-2\cr
 }
 }
@@ -52,5 +52,9 @@ Thulin, Mans. The cost of using exact confidence intervals for a binomial propor
 Vollset, S. E. (1993). Confidence intervals for a binomial proportion. Statistics in Medicine, 12(9): 809-824.
 }
 
+
+\note{
+I would like to express my acknowledgements to Marc Girondot for spotting an error in the "Wilson" method in two extreme cases, when \eqn{x=1} and when \eqn{n-x=1}. He also proposed a modification that exists in the package "Hmisc" and the relevant paper to cite is Agresti & Coull (1998).
+}
 
 
